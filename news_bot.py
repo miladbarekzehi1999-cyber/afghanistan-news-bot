@@ -8,6 +8,7 @@ CHAT_IDS = os.getenv("CHAT_IDS").split(",")
 
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
+
 # -----------------------------
 # Breaking news detection
 # -----------------------------
@@ -82,7 +83,6 @@ def khaama_news():
     for a in soup.select("h2 a")[:6]:
 
         title = a.get_text(strip=True)
-
         link = a["href"]
 
         news.append(("خامه پرس", title, link))
@@ -109,6 +109,9 @@ def tolo_news():
 
         href = a.get("href")
 
+        if not href:
+            continue
+
         if href.startswith("/"):
             link = "https://tolonews.com" + href
         else:
@@ -120,7 +123,7 @@ def tolo_news():
 
 
 # -----------------------------
-# AVA Press
+# AVA Press (fixed)
 # -----------------------------
 def ava_news():
 
@@ -136,9 +139,49 @@ def ava_news():
 
         title = a.get_text(strip=True)
 
-        link = a["href"]
+        href = a.get("href")
+
+        if not href:
+            continue
+
+        if href.startswith("/"):
+            link = "https://www.avapress.com" + href
+        else:
+            link = href
 
         news.append(("خبرگزاری آوا", title, link))
+
+    return news
+
+
+# -----------------------------
+# Pajhwok News
+# -----------------------------
+def pajhwok_news():
+
+    url = "https://pajhwok.com/fa/"
+
+    r = requests.get(url, headers=HEADERS)
+
+    soup = BeautifulSoup(r.text, "lxml")
+
+    news = []
+
+    for a in soup.select("h3 a")[:6]:
+
+        title = a.get_text(strip=True)
+
+        href = a.get("href")
+
+        if not href:
+            continue
+
+        if href.startswith("/"):
+            link = "https://pajhwok.com" + href
+        else:
+            link = href
+
+        news.append(("پژواک", title, link))
 
     return news
 
@@ -210,17 +253,18 @@ def send_photo(caption, image):
 
 
 # -----------------------------
-# Mix sources (balanced feed)
+# Mix sources
 # -----------------------------
 def collect_news():
 
     khaama = khaama_news()
     tolo = tolo_news()
     ava = ava_news()
+    pajhwok = pajhwok_news()
 
     mixed = []
 
-    max_len = max(len(khaama), len(tolo), len(ava))
+    max_len = max(len(khaama), len(tolo), len(ava), len(pajhwok))
 
     for i in range(max_len):
 
@@ -232,6 +276,9 @@ def collect_news():
 
         if i < len(ava):
             mixed.append(ava[i])
+
+        if i < len(pajhwok):
+            mixed.append(pajhwok[i])
 
     return mixed
 
