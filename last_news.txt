@@ -51,3 +51,4 @@ https://www.khaama.com/persian/archives/170740
 https://tolonews.com/index.php/fa/world-199689
 https://tolonews.com/index.php/fa/afghanistan-199694
 https://tolonews.com/index.php/fa/afghanistan-199693
+https://tolonews.com/index.ph%70/fa/world-199689
