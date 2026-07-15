@@ -1003,3 +1003,4 @@ https://tolonews.com/fa/world-200036
 https://tolonews.com/index.php/fa/business-200040
 https://tolonews.com/fa/sport-200041
 https://tolonews.com/index.php/fa/sport-200041
+https://tolonews.com/index.ph%70/fa/world-200036
