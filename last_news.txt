@@ -2540,3 +2540,5 @@ https://tolonews.com/index.php/fa/world-200554
 https://www.avapress.com/fa/news/363738/تصویب-۲۱-پروژه-ارزش-۶-۵-میلیارد-افغانی-کمیسیون-تدارکات
 https://www.avapress.com/fa/news/363736/چهارمین-نشست-علمی-مهدوی-هرات-تأکید-نقش-جامعه-منتظر-تمدن-سازی-برگزار
 https://www.avapress.com/fa/gallery/363762/1/گزارش-تصویری-بازدید-رئیس-مرکز-تبیان-زیرساخت-های-آموزش-الکترونیک-مجتمع-ثمین-تهران
+https://tolonews.com/index.ph%70/fa/business-200555
+https://tolonews.com/index.ph%70/fa/afghanistan-200561
